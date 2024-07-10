@@ -1,7 +1,11 @@
 from turtle import *
-# squre
-side = 3
-for i in range(side):
-    fd(120)
-    lt(360/side)
-mainloop()    
+# hexagonal pattern
+bgcolor ('black')
+speed('fastest')
+colors = ['red','purple','blue','green','yellow','orange']
+for x in range(360):
+    pencolor(colors[x%6])
+    width(x/100+1)
+    forward(x)
+    left(59)
+mainloop()        

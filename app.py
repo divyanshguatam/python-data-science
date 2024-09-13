@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+
  # set pandas ploting backend to repaly
 pd.options.plotting.backend= "plotly"
 

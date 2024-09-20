@@ -1,0 +1,52 @@
+import cv2
+import mediapipe as mp
+mp_hands = mp.solutions.hands
+mp_draw_styles = mp.solutions.drawing_styles
+
+
+def process_image(frame, detection):
+    frame.flags.writeable = False
+    frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
+    results = detection.process(frame)
+    frame= cv2.cvtColor(frame,cv2.COLOR_RGB2BGR)
+    frame.flags.writeable =True 
+    if results.multi_hand_landmarks:
+        for hand_landmarks in results.multi_hand_landmarks:
+            mp_draw_landmarks(frame, hand_landmarks,
+                              mp_hands.HAND_CONNECTIONS,
+                              mp_draw_styles.get_default_)
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+            def read_webcam(idx=0):
+    # 0 means your default camera
+with mp_hand _detection.FaceDetection() as detections:
+
+        video = cv2.VideoCapture(idx)
+        while True:
+            state, frame = video.read()
+            if not state:
+                break
+            frame = process_image(frame,detections)
+            cv2.imshow('frame', frame)         
+            if cv2.waitKey(10) == ord('q'):     
+                break                          
+        video.release()                        
+    cv2.destroyAllWindows()       
+# execute outside function
+if __name__ == "__main__":
+    read_webcam()        
+
+
+
